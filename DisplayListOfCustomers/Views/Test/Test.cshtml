@@ -1,0 +1,80 @@
+﻿@model List<DisplayListOfCustomers.Models.UserModel>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Test</title>
+
+    <style>
+        .label1{
+            font-size:36px;
+            color:darkslateblue;
+            font-family:Arial;
+            font-weight:bold;
+            display:block
+        }
+        #label2 {
+            font-size: 24px;
+            color: brown;
+
+        }
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+
+</head>
+<body>
+    <div> 
+        <h2 class="label1">Wilkommen</h2>
+        <p>Das ist die Hauptbahnhoff!!!</p>
+
+        @Html.Label("Welcome to Razor", new { @class="label1" })
+        @Html.Label("Below are customers:", new { @class = "label1", @id="label2" })
+
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </tr>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => user.Name)</td>
+                <td>@Html.DisplayFor(modelItem => user.EmailAddress)</td>
+                <td>@Html.DisplayFor(modelItem => user.PhoneNumber)</td>
+                
+            </tr>
+        }
+
+
+    </table>
+
+
+
+        @Html.ActionLink("Refresh", "../test")
+
+
+
+    </div>
+</body>
+</html>
